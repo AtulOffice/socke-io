@@ -40,17 +40,19 @@ app.get("/login", (req, res) => {
     });
 });
 
-io.use((socket, next) => {
-  cookieParser()(socket.request, socket.request.res, (err) => {
-    if (err) return next(err);
+// for access of the messaging after the login authentication it is a dummy function
 
-    const token = socket.request.cookies.token;
-    if (!token) return next(new Error("Authentication Error"));
+// io.use((socket, next) => {
+//   cookieParser()(socket.request, socket.request.res, (err) => {
+//     if (err) return next(err);
 
-    const decoded = jwt.verify(token, secretKeyJWT);
-    next();
-  });
-});
+//     const token = socket.request.cookies.token;
+//     if (!token) return next(new Error("Authentication Error"));
+
+//     const decoded = jwt.verify(token, secretKeyJWT);
+//     next();
+//   });
+// });
 
 io.on("connection", (socket) => {
   console.log("User Connected", socket.id);

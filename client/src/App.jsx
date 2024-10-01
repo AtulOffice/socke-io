@@ -58,15 +58,16 @@ const App = () => {
   }, []);
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ height: 500 }} />
-      <Typography variant="h6" component="div" gutterBottom>
-        {socketID}
+    <Container className="container">
+      <Box className="box" />
+      <Typography className="typography" variant="h6" component="div" gutterBottom>
+        room_ID{"==>"}  {socketID}
       </Typography>
 
-      <form onSubmit={joinRoomHandler}>
+      <form className="form" onSubmit={joinRoomHandler}>
         <h5>Join Room</h5>
         <TextField
+          className="text-field"
           value={roomName}
           onChange={(e) => setRoomName(e.target.value)}
           id="outlined-basic"
@@ -78,8 +79,9 @@ const App = () => {
         </Button>
       </form>
 
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <TextField
+          className="text-field"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           id="outlined-basic"
@@ -87,6 +89,7 @@ const App = () => {
           variant="outlined"
         />
         <TextField
+          className="text-field"
           value={room}
           onChange={(e) => setRoom(e.target.value)}
           id="outlined-basic"
@@ -98,14 +101,15 @@ const App = () => {
         </Button>
       </form>
 
-      <Stack>
+      <Stack className="stack">
         {messages.map((item, ind) => (
-          <Typography key={ind} variant="h6" component="div" gutterBottom>
+          <Typography key={ind} className="typography" variant="h6" component="div" gutterBottom>
             {item}
           </Typography>
         ))}
       </Stack>
     </Container>
+
   );
 };
 
